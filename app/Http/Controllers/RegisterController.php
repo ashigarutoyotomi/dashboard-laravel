@@ -3,26 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Symfony\Component\HttpFoundation\Request;
 
 class RegisterController extends Controller
 {
     public function register(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|exists:users,email',
+            'email' => 'required|email|unique:users',
             'password' => 'required|string',
-            'name' => 'required|string|max:255']);
+            'name' => 'required|string|max:50']);
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        return (new User)->create($data);
+        return response($user, 201);
     }
     public function login(Request $request)
     {

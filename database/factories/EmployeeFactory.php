@@ -10,6 +10,7 @@ class EmployeeFactory extends Factory
 
     public function definition()
     {
+        $gender = $this->faker->randomElement(['male', 'female', 'hermaphrodite']);
         return [
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
@@ -20,7 +21,8 @@ class EmployeeFactory extends Factory
             'employed_day' => $this->faker->date,
             'fired_day' => $this->faker->optional()->date, // assuming employees may or may not be fired
             'status' => $this->faker->randomElement(['active', 'inactive']),
-            'avatar' => $this->faker->imageUrl(), // assuming you have a mechanism to store avatar images
+            'file_id' => $this->faker->imageUrl(), // assuming you have a mechanism to store avatar images
+            'sex' => $gender,
         ];
     }
 }

@@ -19,8 +19,9 @@ class CreateEmployeesTable extends Migration
             $table->date('employed_day');
             $table->date('fired_day')->nullable();
             $table->string('status')->defualt(0);
-            $table->string('avatar')->nullable();
+            $table->string('file_id')->nullable();
             $table->timestamps();
+            $table->enum('sex', ['male', 'female', 'hermaphrodite']);
         });
     }
 

@@ -23,14 +23,14 @@ class DatabaseSeeder extends Seeder
             'password' => '$2y$12$wpLk9gcx1v.qUgvwG3ywC.WJIDfwjtwWmqTiQ7m2cT8RFfH/NuGaa',
         ]);
         $departments = [
-            ['name' => 'Logistics', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Tech', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Management', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'PR', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Advertising', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Sells', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Finance', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Reserach&Analytics', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Logistics', 'created_at' => now()->subDays(7)->format('Y-m-d'), 'updated_at' => null],
+            ['name' => 'Tech', 'created_at' => now()->subDays(14)->format('Y-m-d'), 'updated_at' => null],
+            ['name' => 'Management', 'created_at' => now()->subDays(21)->format('Y-m-d'), 'updated_at' => null],
+            ['name' => 'PR', 'created_at' => now()->subDays(28)->format('Y-m-d'), 'updated_at' => null],
+            ['name' => 'Advertising', 'created_at' => now()->subDays(35)->format('Y-m-d'), 'updated_at' => null],
+            ['name' => 'Sells', 'created_at' => now()->subDays(42)->format('Y-m-d'), 'updated_at' => null],
+            ['name' => 'Finance', 'created_at' => now()->subDays(49)->format('Y-m-d'), 'updated_at' => null],
+            ['name' => 'Research&Analytics', 'created_at' => now()->subDays(56)->format('Y-m-d'), 'updated_at' => null],
         ];
 
         DB::table('departments')->insert($departments);
