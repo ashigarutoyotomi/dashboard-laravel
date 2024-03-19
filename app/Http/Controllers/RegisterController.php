@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -56,10 +57,10 @@ class RegisterController extends Controller
             Session::flush();
             $success = true;
             $message = 'Successfully logged out';
-            Auth::user()->tokens()->delete();
-        } catch (\Illuminate\Database\QueryException $ex) {
+            Auth::user()->currentAccessToken()->delete();
+        } catch (Exception $e) {
             $success = false;
-            $message = $ex->getMessage();
+            $message = $e->getMessage();
         }
 
         // response
