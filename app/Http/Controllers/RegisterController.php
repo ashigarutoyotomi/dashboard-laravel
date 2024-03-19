@@ -13,6 +13,7 @@ class RegisterController extends Controller
 {
     public function register(Request $request)
     {
+        // Log::info($request->all());
         $request->validate([
             'email' => 'required|email|unique:users',
             'password' => 'required|string',
@@ -27,6 +28,7 @@ class RegisterController extends Controller
     }
     public function login(Request $request)
     {
+        // Log::info($request->all());
         $request->validate([
             'email' => 'required|email|exists:users,email',
             'password' => 'required|string']);
