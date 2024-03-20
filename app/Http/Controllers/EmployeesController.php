@@ -9,7 +9,7 @@ class EmployeesController extends Controller
 {
     public function index(Request $request)
     {
-        $employees = Employee::all();
+        $employees = Employee::with('department')->get();
         return $employees;
     }
 }

@@ -21,7 +21,7 @@ class Employee extends Model
         'employed_day',
         'fired_day',
         'status',
-        'avatar',
+        'file_id',
     ];
     public function department()
     {
