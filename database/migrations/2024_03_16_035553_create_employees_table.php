@@ -12,13 +12,13 @@ class CreateEmployeesTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('mid_name')->nullable();
-            $table->integer('age')->defualt(18);
+            $table->integer('age')->default(18);
             $table->date('bday');
             $table->unsignedBigInteger('department_id');
             $table->foreign('department_id')->references('id')->on('departments');
             $table->date('employed_day');
             $table->date('fired_day')->nullable();
-            $table->string('status')->defualt(0);
+            $table->string('status')->default(0);
             $table->string('file_id')->nullable();
             $table->timestamps();
             $table->enum('sex', ['male', 'female', 'hermaphrodite']);
