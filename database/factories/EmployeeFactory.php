@@ -18,7 +18,7 @@ class EmployeeFactory extends Factory
             'age' => $this->faker->numberBetween(18, 65),
             'bday' => $this->faker->date,
             'department_id' => $this->faker->numberBetween(1, 8), // assuming departments are predefined
-            'employed_day' => $this->faker->date,
+            'employeed_day' => $this->faker->date,
             'fired_day' => $this->faker->optional()->date, // assuming employees may or may not be fired
             'status' => $this->faker->randomElement(['active', 'inactive']),
             'file_id' => $this->faker->imageUrl(), // assuming you have a mechanism to store avatar images

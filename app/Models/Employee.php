@@ -18,7 +18,7 @@ class Employee extends Model
         'age',
         'bday',
         'department_id',
-        'employed_day',
+        'employeed_day',
         'fired_day',
         'status',
         'file_id',
