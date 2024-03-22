@@ -98,7 +98,7 @@ class EmployeesController extends Controller
             $employee->mid_name = $request->mid_name ? $request->first_name : null;
             $employee->department_id = $request->department_id;
             $employee->bday = $transformedDate;
-            $employee->mid_name = $request->mid_name ? $request->first_name : null;
+            $employee->mid_name = $request->mid_name ? $request->mid_name : null;
             $employee->sex = $request->sex;
             $employee->age = $request->age;
             $employee->employeed_day = $transformedEmployeedDate;
