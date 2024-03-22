@@ -15,7 +15,7 @@ class CreateEmployeesTable extends Migration
             $table->integer('age')->default(18);
             $table->date('bday');
             $table->unsignedBigInteger('department_id');
-            $table->foreign('department_id')->references('id')->on('departments');
+            $table->foreign('department_id')->references('id')->on('departments')->cascadeOnDelete();
             $table->date('employeed_day');
             $table->date('fired_day')->nullable();
             $table->string('status')->default(0);

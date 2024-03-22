@@ -66,6 +66,7 @@ class EmployeesController extends Controller
 
     public function update(Request $request, $id)
     {
+        // Log::info($request->all());
         $request->validate([
             'first_name' => 'nullable|string',
             'last_name' => 'nullable|string',
@@ -78,7 +79,7 @@ class EmployeesController extends Controller
             'employeed_day' => 'nullable|date',
             'fired_day' => 'nullable|date',
         ]);
-        $employee = new Employee();
+        $employee = Employee::findOrFail($id);
         $carbonDate = Carbon::parse($request->bday);
         $transformedDate = $carbonDate->format('Y-m-d');
         $carbonEmployeedDate = Carbon::parse($request->bday);
@@ -88,9 +89,9 @@ class EmployeesController extends Controller
             $carbonFiredDate = Carbon::parse($request->bday);
             $transformedFiredDate = $carbonDate->format('Y-m-d');
         }
-        DB::transaction(function () use ($request, $employee, $transformedDate, $transformedEmployeedDate,
-            $transformedFiredDate) {
-            $employee = new Employee();
+
+        try {
+            DB::beginTransaction();
             $employee->first_name = $request->first_name;
             $employee->last_name = $request->last_name;
             $employee->mid_name = $request->mid_name ? $request->mid_name : null;
@@ -104,7 +105,12 @@ class EmployeesController extends Controller
             $employee->employeed_day = $transformedEmployeedDate;
             $employee->fired_day = $request->fired_day ? $transformedFiredDate : null;
             $employee->save();
-        });
+            DB::commit();
+        } catch (Exception $e) {
+
+            DB::rollBack();
+            return $e;
+        }
 
         return response()->json($employee, 201);
     }
